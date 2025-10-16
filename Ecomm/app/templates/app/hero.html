@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    {% comment %} <link href="{% static 'src/output.css' %}" rel="stylesheet"> {% endcomment %}
+
+</head>
+<body>
+    <div class="min-h-screen bg-gray-100 flex items-center justify-center">
+  <div class="bg-white rounded-3xl shadow-xl p-10 flex flex-col md:flex-row items-center md:space-x-8 w-full max-w-4xl">
+    <!-- Left text section -->
+    <div class="flex-1">
+      <h1 class="text-4xl font-bold text-blue-900 mb-6">
+        Register your store name now!
+      </h1>
+      <p class="text-lg text-gray-600 mb-8">
+        With etail.me, anyone can earn their first dollar online. Just start with what you know. It’s that easy.
+      </p>
+      <form class="flex items-center space-x-3">
+        <span class="inline-flex bg-purple-100 text-purple-600 px-4 py-2 rounded-xl font-medium items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8h18M3 16h18" />
+          </svg>
+          My store
+        </span>
+        <input
+          type="text"
+          placeholder="Enter your store name"
+          class="rounded-full border py-2 px-6 focus:outline-none focus:ring-2 focus:ring-blue-300 w-64"
+        />
+        <button class="bg-pink-500 hover:bg-pink-600 text-white rounded-full px-4 py-2 shadow-xl transition">
+          →
+        </button>
+      </form>
+    </div>
+    <!-- Right illustration section -->
+    <div class="flex-1 flex flex-col items-center">
+      <div class="relative w-64 h-64 bg-purple-100 rounded-3xl flex items-center justify-center shadow-lg">
+        <!-- Placeholder for 3D store graphic -->
+        <div class="absolute left-8 top-10 w-40 h-40 bg-white rounded-2xl border border-gray-200 shadow-lg flex flex-col items-center justify-center">
+          <span class="bg-pink-500 w-20 h-8 rounded-lg text-white flex items-center justify-center font-bold shadow-lg mt-4">etail</span>
+          <div class="mt-4 w-10 h-10 bg-yellow-400 rounded-full flex items-center justify-center text-2xl">$</div>
+        </div>
+        <!-- Placeholder for boxes -->
+        <div class="absolute top-0 right-0 w-16 h-16 bg-yellow-200 rounded-xl shadow-lg border border-gray-300 flex items-center justify-center font-bold">etail</div>
+        <div class="absolute top-12 right-2 w-12 h-12 bg-yellow-200 rounded-lg shadow border border-gray-300 flex items-center justify-center font-bold">etail</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html> 
