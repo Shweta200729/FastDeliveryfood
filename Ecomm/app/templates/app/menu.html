@@ -11,14 +11,15 @@
 </head>
 <body class="bg-yellow-50">
   <!-- Navbar -->
-  <nav class="bg-yellow-100 shadow-md sticky top-0 z-50">
+  <nav nav id="navbar" class="bg-yellow-400 shadow-md sticky top-0 z-50 transition duration-300">
+   
     <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
-      <span class="font-extrabold text-2xl text-yellow-700">QuickFood</span>
+      <span class="font-extrabold text-2xl text-yellow-700">BurgerHub</span>
       <ul class="flex space-x-6 font-semibold">
+        <li class="hover:text-yellow-500 cursor-pointer transition">Home</li>
         <li class="hover:text-yellow-500 cursor-pointer transition">Menu</li>
-        <li class="hover:text-yellow-500 cursor-pointer transition">Order</li>
-        <li class="hover:text-yellow-500 cursor-pointer transition">Contact</li>
-        <li class="hover:text-yellow-500 cursor-pointer transition">Gallery</li>
+        <li class="hover:text-yellow-500 cursor-pointer transition">About</li>
+        <li class="hover:text-yellow-500 cursor-pointer transition">Book Table</li>
       </ul>
       <a href="tel:+14809507549" class="bg-yellow-100 px-4 py-2 rounded-full text-yellow-700 font-semibold shadow hover:bg-yellow-300 transition">icon</a>
     </div>
@@ -29,7 +30,7 @@
     <div class="max-w-2xl mx-auto flex flex-col items-center">
       <img src="https://tse2.mm.bing.net/th/id/OIP.FhiRqUATSxyHZsgE6OJJlAHaE8?cb=12&w=600&h=400&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Pizza With Seafood" class="w-56 h-56 rounded-full shadow-2xl border-8 border-white mb-8 animate-bounce">
       <span class="bg-orange-500 text-white px-4 py-1 rounded-full text-xs uppercase font-bold shadow mb-2">New Menu</span>
-      <h1 class="text-5xl font-extrabold text-gray-800 mb-3">Pizza with Seafood</h1>
+      <h1 class="text-5xl font-extrabold text-gray-300 mb-3">Pizza with Seafood</h1>
       <a href="#" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-white px-8 py-3 rounded-lg text-lg font-semibold shadow transition duration-300 mt-5">Order Online</a>
     </div>
   </section>
@@ -75,40 +76,39 @@
       </div>
       <div class="flex flex-wrap gap-8 justify-center">
         <!-- Burger Card -->
-        <div class="bg-white rounded-2xl shadow-md p-6 text-center w-64 hover:shadow-xl transition flex flex-col items-center border-4 border-yellow-100">
+        <div class="bg-white rounded-2xl shadow-md p-6 text-center w-64 hover:shadow-xl transition flex flex-col items-center border-4  border-gray-300 hover:border-gray-500">
           <img src="https://tse2.mm.bing.net/th/id/OIP.XULephKEEE5Obq11QTSTiQHaE8?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3" alt="" class="w-28 h-24 mb-4 rounded-full">
           <h3 class="font-semibold text-lg mb-1">Double Burger</h3>
-          <p>- A hearty option featuring two juicy beef patties, stacked with layers of cheese, lettuce, tomato, and pickles. It’s perfect for those who crave extra protein and bold flavor. Often served with smoky sauce or barbecue mayo for added richness.</p>
+          <p>-  It’s perfect for those who crave extra protein and bold flavor. Often served with smoky sauce or barbecue mayo for added richness.</p>
           <span class="text-yellow-600 font-bold text-xl mb-2">$15.00</span>
           <a href="#" class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg font-bold mt-2">Order Online</a>
         </div>
-        <div class="bg-white rounded-2xl shadow-md p-6 text-center w-64 hover:shadow-xl transition flex flex-col items-center border-4 border-yellow-100">
+        <div class="bg-white rounded-2xl shadow-md p-6 text-center w-64 hover:shadow-xl transition flex flex-col items-center border-4 border-gray-300 hover:border-gray-500">
           <img src="https://tse4.mm.bing.net/th/id/OIP.m93SV6ox1swkqRaBnEzbHgHaHa?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3" alt="" class="w-28 h-24 mb-4 rounded-full">
           <h3 class="font-semibold text-lg mb-1">Chicken Burger</h3>
-          <p>-  Made with a crispy or grilled chicken fillet, this burger is lighter than beef but still satisfying. Toppings often include lettuce, mayo, and sometimes coleslaw or spicy sauce. It’s a favorite among those who prefer lean meat with crunch.
-- 
+          <p>-  Made with a crispy or grilled chicken fillet, this burger is lighter than beef but still satisfying. Toppings often include lettuce, mayo, and sometimes coleslaw or spicy sauce. 
 </p>
           <span class="text-yellow-600 font-bold text-xl mb-2">$9.50</span>
           <a href="#" class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg font-bold mt-2">Order Online</a>
         </div>
-        <div class="bg-white rounded-2xl shadow-md p-6 text-center w-64 hover:shadow-xl transition flex flex-col items-center border-4 border-yellow-300">
+        <div class="bg-white rounded-2xl shadow-md p-6 text-center w-64 hover:shadow-xl transition flex flex-col items-center border-4  border-gray-300 hover:border-gray-500">
           <img src="https://www.tasteofhome.com/wp-content/uploads/2018/01/Eggs-Benedict-Burgers_exps164638_TH2847295B03_07_1bC_RMS-2.jpg?resize=568%2C568" alt="" class="w-28 h-24 mb-4 rounded-full">
           <h3 class="font-semibold text-lg mb-1">Mexican Burger</h3>
-          <p>- : A spicy twist on the classic, this burger includes jalapeños, salsa, guacamole, and sometimes nacho chips. The patty can be beef or chicken, and it’s usually paired with pepper jack cheese and chipotle mayo. It’s bold, zesty, and full of flavor.</p>
+          <p>- : A spicy twist on the classic, this burger includes jalapeños, salsa, guacamole, and sometimes nacho chips. It’s bold, zesty, and full of flavor.</p>
           <span class="text-yellow-600 font-bold text-xl mb-2">$12.50</span>
           <a href="#" class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg font-bold mt-2">Order Online</a>
         </div>
-        <div class="bg-white rounded-2xl shadow-md p-6 text-center w-64 hover:shadow-xl transition flex flex-col items-center border-4 border-yellow-100">
+        <div class="bg-white rounded-2xl shadow-md p-6 text-center w-64 hover:shadow-xl transition flex flex-col items-center border-4 border-gray-300 hover:border-gray-500">
           <img src="https://tse1.mm.bing.net/th/id/OIP.irBE1-MRWxEoGCn40-3YMwHaFj?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3" alt="" class="w-28 h-24 mb-4 rounded-full">
           <h3 class="font-semibold text-lg mb-1">Mini Burger</h3>
-          <p>- Also known as sliders, these are small-sized burgers served in pairs or trios. They’re ideal for parties or tasting menus. Mini burgers can feature any patty type and are often topped with cheese, ketchup, and pickles for a classic bite.</p>
+          <p>- Also known as sliders, these are small-sized burgers served in pairs or trios. They’re ideal for parties or tasting menus. </p>
           <span class="text-yellow-600 font-bold text-xl mb-2">$10.90</span>
           <a href="#" class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg font-bold mt-2">Order Online</a>
         </div>
-        <div class="bg-white rounded-2xl shadow-md p-6 text-center w-64 hover:shadow-xl transition flex flex-col items-center border-4 border-yellow-100">
+        <div class="bg-white rounded-2xl shadow-md p-6 text-center w-64 hover:shadow-xl transition flex flex-col items-center border-4 border-gray-300 hover:border-gray-500">
           <img src="https://th.bing.com/th/id/R.82ed63296c0d8a575525b40b4077c5d7?rik=RlAZ23ZO9hXp%2fw&riu=http%3a%2f%2fwww.tasteandflavors.com%2fwp-content%2fuploads%2f2020%2f05%2fCLASSIC-BURGER.jpg&ehk=ita3zP0qe4Ob0E3JIQJh0fJX91idH5rBX6bKYISHs74%3d&risl=&pid=ImgRaw&r=0" alt="" class="w-28 h-24 mb-4 rounded-full">
           <h3 class="font-semibold text-lg mb-1">Classic Burger</h3>
-          <p>-  The timeless favorite—a single beef patty, cheddar cheese, lettuce, tomato, onion, and ketchup/mustard on a toasted bun. It’s simple, satisfying, and customizable. Some versions include bacon or a fried egg for extra indulgence.
+          <p>-  The timeless favorite—a single beef patty, cheddar cheese, lettuce, tomato, onion, and ketchup/mustard on a toasted bun.
 
 
 </p>
@@ -120,9 +120,9 @@
   </section>
 
   <!-- Sandwich Day Offer -->
-  <section class="relative  bg-[url(https://tse4.mm.bing.net/th/id/OIP.Efftgdm9D_tHBPNCAnDN1QHaE8?cb=12&w=626&h=418&rs=1&pid=ImgDetMain&o=7&rm=3)]  py-12 px-6 flex flex-col items-center">
+  <section class="relative  bg-[url(https://t3.ftcdn.net/jpg/06/88/77/00/360_F_688770031_V32Ouk8w7MKEVFFwD1RVdVRZ6phaHx46.jpg)]  py-12 px-6 flex flex-col items-center">
     <span class="bg-red-500 text-white px-4 py-2 rounded-full text-sm font-bold mb-4 shadow">Free Delivery</span>
-    <h2 class="text-3xl font-extrabold mb-2 text-gray-800">Sandwich Day</h2>
+    <h2 class="text-3xl font-extrabold mb-2 text-yellow-200">Sandwich Day</h2>
     <p class="text-xl mb-6 text-gray-300">Sandwiches from $3.99 only!</p>
     <a href="#" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-white px-8 py-3 rounded-lg text-lg font-semibold shadow transition duration-300">Order Online</a>
   </section>
@@ -182,4 +182,16 @@
     <div class="text-center mt-8 text-gray-400">&copy; 2025 QuickFood. All Rights Reserved.</div>
   </footer>
 </body>
+<script>
+  window.addEventListener('scroll', function () {
+    const navbar = document.getElementById('navbar');
+    if (window.scrollY > 50) {
+      navbar.classList.remove('bg-yellow-100');
+      navbar.classList.add('bg-yellow-100/50', 'backdrop-blur-md');
+    } else {
+      navbar.classList.remove('bg-yellow-100/50', 'backdrop-blur-md');
+      navbar.classList.add('bg-yellow-100');
+    }
+  });
+</script>
 </html>        
