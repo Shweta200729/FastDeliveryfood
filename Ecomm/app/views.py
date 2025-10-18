@@ -9,3 +9,11 @@ def landing (request):
 
 def menu (request):
     return render (request, "app/menu.html")
+    
+def cart (request):
+    return render (request, "app/cart.html")
+
+def BookingTable (request):
+    return render (request, "app/Bookingtable.html")
+    
+    

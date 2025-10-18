@@ -1,0 +1,150 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Akshay's Product Cart</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body >
+    <div class=" p-6 font-sans  bg-[url(https://img.freepik.com/premium-photo/fast-food-junkies-delight_198067-375.jpg?w=996)]  bg-cover  ">
+  <div class="max-w-2xl mx-auto  bg-yellow-200 shadow-lg rounded-lg p-6">
+    <h2 class="text-2xl font-bold mb-4">🛒 Product Cart - Shweta </h2>
+
+    <!-- Product Template -->
+    <div id="cart-items" class="space-y-4">
+      <!-- McPaneer Burger -->
+      <div class="flex items-center justify-between bg-gray-50 p-4 rounded-lg shadow-sm" data-price="170">
+        <div class="flex items-center space-x-4">
+          <img src="https://tse2.mm.bing.net/th/id/OIP.wPxPvmSwVg9ctUUqWH4mBgHaFK?cb=12ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3" alt="McPaneer" class="w-16 h-16 rounded" />
+          <div>
+            <h3 class="font-semibold text-lg">McPaneer Burger</h3>
+            <p class="text-sm text-gray-500">₹170</p>
+          </div>
+        </div>
+        <div class="flex items-center space-x-2">
+          <button class="minus px-2 py-1 bg-red-100 rounded">−</button>
+          <span class="quantity px-3">0</span>
+          <button class="plus px-2 py-1 bg-green-100 rounded">+</button>
+        </div>
+        <div class="text-right">
+          <p class="text-sm text-gray-600">Total: ₹<span class="total">0</span></p>
+        </div>
+        <button class="remove text-red-500 text-xl ml-4">✖</button>
+      </div>
+
+      <!-- McVeggie Burger -->
+      <div class="flex items-center justify-between bg-gray-50 p-4 rounded-lg shadow-sm" data-price="150">
+        <div class="flex items-center space-x-4">
+          <img src="https://tse3.mm.bing.net/th/id/OIP.H8fX5eBqf9HU3EROcTUbzQHaEo?cb=12ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3" alt="McVeggie" class="w-16 h-16 rounded" />
+          <div>
+            <h3 class="font-semibold text-lg">McVeggie Burger</h3>
+            <p class="text-sm text-gray-500">₹150</p>
+          </div>
+        </div>
+        <div class="flex items-center space-x-2">
+          <button class="minus px-2 py-1 bg-red-100 rounded">−</button>
+          <span class="quantity px-3">0</span>
+          <button class="plus px-2 py-1 bg-green-100 rounded">+</button>
+        </div>
+        <div class="text-right">
+          <p class="text-sm text-gray-600">Total: ₹<span class="total">0</span></p>
+        </div>
+        <button class="remove text-red-500 text-xl ml-4">✖</button>
+      </div>
+    </div>
+
+     <div class="flex items-center justify-between bg-gray-50 my-4 p-4 rounded-lg shadow-sm" data-price="150">
+        <div class="flex items-center space-x-4">
+          <img src="https://theaustralianfoodshop.com/wp-content/uploads/2020/06/schweppes-solo-lemon-can-375ml.jpg" alt="McVeggie" class="w-16 h-16 rounded" />
+          <div>
+            <h3 class="font-semibold text-lg">McVeggie Burger</h3>
+            <p class="text-sm text-gray-500">₹150</p>
+          </div>
+        </div>
+        <div class="flex items-center space-x-2">
+          <button class="minus px-2 py-1 bg-red-100 rounded">−</button>
+          <span class="quantity px-3">0</span>
+          <button class="plus px-2 py-1 bg-green-100 rounded">+</button>
+        </div>
+        <div class="text-right">
+          <p class="text-sm text-gray-600">Total: ₹<span class="total">0</span></p>
+        </div>
+        <button class="remove text-red-500 text-xl ml-4">✖</button>
+      </div>
+  <button class="bg-amber-400 text-white font-semibold rounded-lg px-6 py-2 shadow-md hover:bg-amber-500 ml-[520px] transition duration-300">
+    Book
+  </button>
+
+    </div>
+
+    </div>
+  </div>
+
+
+  
+  {% comment %} footer {% endcomment %}
+   <footer class="bg-gray-900 text-white  mt-1.5 pt-10 pb-8">
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div>
+        <span class="font-extrabold text-2xl text-yellow-600">QuickFood</span>
+        <p class="mt-3 text-gray-300">Address: 123 Food Street, NYC, USA</p>
+        <p class="mt-2 text-gray-300">Email: info@quickfood.com</p>
+        <p class="mt-2 text-gray-300">Phone: +1 480 950 7549</p>
+      </div>
+      <div>
+        <h4 class="text-yellow-400 font-bold mb-3">Our Menu</h4>
+        <ul>
+          <li>Burgers</li>
+          <li>Pizzas</li>
+          <li>Sandwiches</li>
+          <li>Cakes</li>
+          <li>Drinks</li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-yellow-400 font-bold mb-3">Newsletter</h4>
+        <label class="block mb-2">Subscribe for offers:</label>
+        <div class="flex">
+          <input type="email" placeholder="Email Address" class="px-3 py-2 rounded-l bg-gray-800 text-white outline-none">
+          <button class="bg-yellow-500 px-5 py-2 rounded-r text-white font-bold hover:bg-yellow-600 transition">Subscribe</button>
+        </div>
+      </div>
+    </div>
+    <div class="text-center mt-8 text-gray-400">&copy; 2025 QuickFood. All Rights Reserved.</div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.plus').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const container = btn.closest('[data-price]');
+        const quantityEl = container.querySelector('.quantity');
+        const totalEl = container.querySelector('.total');
+        let quantity = parseInt(quantityEl.textContent);
+        quantity++;
+        quantityEl.textContent = quantity;
+        totalEl.textContent = quantity * parseInt(container.dataset.price);
+      });
+    });
+
+    document.querySelectorAll('.minus').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const container = btn.closest('[data-price]');
+        const quantityEl = container.querySelector('.quantity');
+        const totalEl = container.querySelector('.total');
+        let quantity = parseInt(quantityEl.textContent);
+        if (quantity > 0) quantity--;
+        quantityEl.textContent = quantity;
+        totalEl.textContent = quantity * parseInt(container.dataset.price);
+      });
+    });
+
+    document.querySelectorAll('.remove').forEach(btn => {
+      btn.addEventListener('click', () => {
+        btn.closest('[data-price]').remove();
+      });
+    });
+  </script>
+</body>
+</html>

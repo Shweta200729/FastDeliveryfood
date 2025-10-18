@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book A Table</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-300 p-6 font-sans">
+
+  <div class="max-w-5xl mx-auto bg-white shadow-lg rounded-lg p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+    
+    <!-- Booking Form -->
+    <div>
+      <h2 class="text-3xl font-bold mb-6 text-gray-800 font-serif">Book A Table</h2>
+      
+      <form class="space-y-4">
+        <input type="text" placeholder="Your Name" class="w-full border border-gray-300 rounded-md p-3 placeholder-gray-500" />
+        <input type="text" placeholder="Phone Number" class="w-full border border-gray-300 rounded-md p-3 placeholder-gray-500" />
+        <input type="email" placeholder="Your Email" class="w-full border border-gray-300 rounded-md p-3 placeholder-gray-500" />
+        
+        <select class="w-full border border-gray-300 rounded-md p-3 text-gray-500">
+          <option>How many persons?</option>
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4+</option>
+        </select>
+        
+        <input type="text" placeholder="dd-mm-yyyy" class="w-full border border-gray-300 rounded-md p-3 placeholder-gray-500" />
+        
+        <button type="submit" class="bg-amber-400 text-white font-semibold rounded-md px-6 py-3 hover:bg-amber-500 transition duration-300">
+          BOOK NOW
+        </button>
+      </form>
+    </div>
+
+    <!-- Map Placeholder -->
+    <div class="bg-gray-200 rounded-md h-full flex items-center bg-[url(https://www.addictivetips.com/app/uploads/2017/11/google-maps-search-this-area.jpg)] bg-cover justify-center text-gray-600 text-center p-4">
+      <p>This page can't load Google Maps correctly.<br />Do you own this website?</p>
+      <button class="mt-4 px-4 py-2 bg-gray-300 rounded hover:bg-gray-400">OK</button>
+    </div>
+  </div>
+
+</body>
+</html>
