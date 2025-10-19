@@ -6,6 +6,34 @@
      <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+
+    <style>
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .map-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  #map {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    border-radius: inherit; /* Keeps parent corner roundness */
+  }
+</style>
+
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
@@ -31,7 +59,11 @@
       <img src="https://tse2.mm.bing.net/th/id/OIP.FhiRqUATSxyHZsgE6OJJlAHaE8?cb=12&w=600&h=400&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Pizza With Seafood" class="w-56 h-56 rounded-full shadow-2xl border-8 border-white mb-8 animate-bounce">
       <span class="bg-orange-500 text-white px-4 py-1 rounded-full text-xs uppercase font-bold shadow mb-2">New Menu</span>
       <h1 class="text-5xl font-extrabold text-gray-300 mb-3">Pizza with Seafood</h1>
-      <a href="#" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-white px-8 py-3 rounded-lg text-lg font-semibold shadow transition duration-300 mt-5">Order Online</a>
+
+      <form action="" method="post">
+        {% csrf_token %}
+        <button type="submit" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-white px-8 py-3 rounded-lg text-lg font-semibold shadow transition duration-300 mt-5">Order Online</button>
+      </form>
     </div>
   </section>
 
@@ -151,6 +183,46 @@
     </div>
   </section>
 
+  <section class="max-w-6xl mx-auto px-6 py-12">
+    <div class="max-w-5xl mx-auto bg-white shadow-lg rounded-lg p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+    
+    <!-- Booking Form -->
+    <div>
+      <h2 class="text-3xl font-bold mb-6 text-gray-800 font-serif">Book A Table</h2>
+      
+      <form class="space-y-4" method ='post' action = '{% url "BookingTable" %}'>
+        {% csrf_token %}
+        <input type="text" placeholder="Your Name" class="w-full border border-gray-300 rounded-md p-3 placeholder-gray-500" name='name'/>
+        <input type="text" placeholder="Phone Number" class="w-full border border-gray-300 rounded-md p-3 placeholder-gray-500" name='phone'/>
+        <input type="email" placeholder="Your Email" class="w-full border border-gray-300 rounded-md p-3 placeholder-gray-500" name='email'/>
+        
+        <select class="w-full border border-gray-300 rounded-md p-3 text-gray-500" name='person_count'>
+          <option>How many persons?</option>
+          <option value ='1'>1</option>
+          <option value='2'>2</option>
+          <option value='3'>3</option>
+          <option value='4'>4</option>
+        </select>
+        
+        <input type="text" placeholder="dd-mm-yyyy" class="w-full border border-gray-300 rounded-md p-3 placeholder-gray-500" name='date' />
+        
+        <button type="submit" class="bg-amber-400 text-white font-semibold rounded-md px-6 py-3 hover:bg-amber-500 transition duration-300">
+          BOOK NOW
+        </button>
+      </form>
+    </div>
+
+    <!-- Map Placeholder -->
+<div class="bg-gray-200 rounded-md h-[500px] w-full overflow-hidden">
+  <div class="map-container">
+    <div id="map"></div>
+  </div>
+</div>
+
+  </div>
+
+  </section>
+
 <!-- Footer Section -->
   <footer class="bg-gray-900 text-white pt-10 pb-8">
     <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -182,6 +254,27 @@
     <div class="text-center mt-8 text-gray-400">&copy; 2025 QuickFood. All Rights Reserved.</div>
   </footer>
 </body>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <script>
+      // Create map centered at the fixed coordinates
+      const map = L.map("map").setView([{{ lat }}, {{ lon }}], 13);
+
+      // Add Geoapify tile layer
+      L.tileLayer(
+        `https://maps.geoapify.com/v1/tile/osm-bright/{z}/{x}/{y}.png?apiKey={{ api_key }}`,
+        {
+          attribution:
+            'Powered by <a href="https://www.geoapify.com/">Geoapify</a> | © OpenStreetMap contributors',
+        }
+      ).addTo(map);
+
+      // Add marker at the same location
+      L.marker([{{ lat }}, {{ lon }}])
+        .addTo(map)
+        .bindPopup("Mumbai, India")
+        .openPopup();
+    </script>
 <script>
   window.addEventListener('scroll', function () {
     const navbar = document.getElementById('navbar');
