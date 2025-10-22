@@ -15,8 +15,11 @@ def menu(request):
         "api_key": "c22c22aa0aed46e5bf788d2004d335b3",
     }
     if request.method == 'POST':
-        return redirect('cart')
+        return redirect('items')
     return render(request, "app/menu.html", context)
+
+def items(request):
+    return render(request,'app/items.html')
 
 def cart (request):
     return render (request, "app/cart.html")
