@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
 class Booking(models.Model):
     PERSON_CHOICES = [
         ('1', '1'),
@@ -21,9 +22,18 @@ class Booking(models.Model):
 
 
 class OrderItem(models.Model):
+    types = [
+        ('Starter', 'Starter'),
+        ('Main_course', 'Main_course'),
+        ('Beverages', 'Beverages'),
+        ('Dessert', 'Dessert'),
+    ]
+
     prd_name = models.CharField(max_length=50, unique=True)
     prd_price = models.IntegerField()
     prd_image = models.ImageField(upload_to='producting/', null=True, blank=True)
+    prd_description = models.TextField()
+    prd_type = models.CharField(max_length=20, choices=types)
 
     def __str__(self):
         return self.prd_name
@@ -32,5 +42,6 @@ class OrderItem(models.Model):
 class Cart(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     products = models.ManyToManyField(OrderItem)
+
     def __str__(self):
         return f"{self.user.username}'s Cart"
