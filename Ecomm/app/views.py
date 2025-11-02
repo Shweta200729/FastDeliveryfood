@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
-from .models import Booking,OrderItem
+from .models import Booking,OrderItem,Cart
 from django.http import JsonResponse
+import json
 
 # Create your views here.
 def home (request):
@@ -27,7 +28,9 @@ def items(request):
     return render(request,'app/items.html')
 
 def cart (request): 
-    return render (request, "app/cart.html")
+    user = request.user 
+    items = Cart.objects.filter(user == user)
+    return render (request, "app/cart.html",{'item':items})
 
 def BookingTable(request):
     if request.method == 'POST':
@@ -94,3 +97,23 @@ def RenderItem(request):
         'Desserts': dessert_list
     }
     return JsonResponse(data)
+
+def send_cart_data(request):
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            name = data['prd_name']
+            desc = data['desc']
+            img_src = data['img_src']
+            price = data['price']
+            user = request.user
+            Cart.objects.create(user = user,cart_prd_name = name,cart_prd_price= price,cart_prd_description= desc,cart_prd_image=img_src)
+            
+            response = {
+                'message':'item added successfully'
+            }
+            return JsonResponse(response)
+        except json.JSONDecodeError:
+            return JsonResponse({"error": "Invalid JSON"}, status=400)
+    return JsonResponse({"error": "Only POST method allowed"}, status=405)
+        

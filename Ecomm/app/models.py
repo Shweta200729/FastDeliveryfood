@@ -20,7 +20,6 @@ class Booking(models.Model):
     def __str__(self):
         return self.name
 
-
 class OrderItem(models.Model):
     types = [
         ('Starter', 'Starter'),
@@ -30,18 +29,25 @@ class OrderItem(models.Model):
     ]
 
     prd_name = models.CharField(max_length=50, unique=True)
-    prd_price = models.IntegerField()
+    prd_price = models.IntegerField(default=0)
     prd_image = models.ImageField(upload_to='producting/', null=True, blank=True)
     prd_description = models.TextField()
     prd_type = models.CharField(max_length=20, choices=types)
-
+    prd_quantity = models.PositiveIntegerField(default = 1)
     def __str__(self):
         return self.prd_name
 
 
 class Cart(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    products = models.ManyToManyField(OrderItem)
+    cart_prd_name = models.CharField(max_length=50)
+    cart_prd_price = models.IntegerField(default=0)
+    cart_prd_description = models.TextField(blank=True)
+    cart_prd_image = models.URLField(max_length=300, blank=True, null=True)
 
     def __str__(self):
-        return f"{self.user.username}'s Cart"
+        return f"{self.cart_prd_name} - ₹{self.cart_prd_price}"
+
+class UserTotal(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    total_amount = models.PositiveIntegerField(default=0)

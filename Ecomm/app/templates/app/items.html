@@ -29,27 +29,29 @@
 
 <body class="overflow-x-hidden">
 
-  <!-- Navbar -->
-  <div id="navbar" class="fixed top-0 left-0 w-full flex justify-between items-center px-10 py-3 bg-white/70 backdrop-blur-md transition-all duration-300 z-50">
-    <div class="flex gap-8 items-center font-medium text-[#2C2C2C]">
-      <div class="hover:text-[#F4A460] cursor-pointer">🍽️ Menu</div>
-      <div class="hover:text-[#F4A460] cursor-pointer">📅 Book Table</div>
-      <div class="hover:text-[#F4A460] cursor-pointer">🎉 Offers</div>
-      <div class="hover:text-[#F4A460] cursor-pointer">📞 Contact</div>
-    </div>
+<!-- Navbar -->
+<div id="navbar"
+  class="fixed top-0 left-0 w-full flex justify-between items-center px-10 py-3 bg-white/70 backdrop-blur-md transition-all duration-300 z-50">
 
-  <form method="post">
-      {% csrf_token %}
-      <button type='submit' name='btn_type' value ='cart'>
-        <div id="cartIcon" class="flex items-center gap-2 bg-[#F4A460] text-white px-4 py-2 rounded-full font-semibold hover:scale-105 hover:shadow-lg transition-all duration-300 cursor-pointer">
+  <!-- Left Menu Items -->
+  <div class="flex gap-8 items-center font-medium text-[#2C2C2C]">
+    <div class="hover:text-[#F4A460] cursor-pointer">🍽️ Menu</div>
+    <div class="hover:text-[#F4A460] cursor-pointer">📅 Book Table</div>
+    <div class="hover:text-[#F4A460] cursor-pointer">🎉 Offers</div>
+    <div class="hover:text-[#F4A460] cursor-pointer">📞 Contact</div>
+  </div>
+
+  <!-- Cart Button Form -->
+  <form method="post" action="">
+    {% csrf_token %}
+    <button type="submit" name="btn_type" value="cart"
+      class="flex items-center gap-2 bg-[#F4A460] text-white px-4 py-2 rounded-full font-semibold hover:scale-105 hover:shadow-lg transition-all duration-300 cursor-pointer">
       <span>🛒</span>
       <span id="cartCount">0</span>
-    </div>
-      </button>
-      
-  </div>
-    </form>
-    
+    </button>
+  </form>
+</div>
+
 
   <!-- Search -->
   <div class="mt-20 px-10 text-center">
@@ -125,7 +127,7 @@
           <p class="text-sm text-gray-600 mb-3">${dish.desc}</p>
           <div class="flex justify-between items-center">
             <span class="text-[#F4A460] font-bold text-lg">₹${dish.price}</span>
-            <button onclick="addToCart(event)" class="bg-[#F4A460] text-white px-4 py-2 rounded-full font-semibold hover:scale-105 transition-all duration-300">Add</button>
+            <button onclick="addToCart(event,'${dish.name}','${dish.desc}','${dish.img}','${dish.price}')" class="bg-[#F4A460] text-white px-4 py-2 rounded-full font-semibold hover:scale-105 transition-all duration-300">Add</button>
           </div>
         </div>
       `;
@@ -146,10 +148,42 @@
   }
 
   // 🛒 Simple add-to-cart animation
-  function addToCart(event) {
+  async function addToCart(event, prd_name , desc, img_src, price) {
+
+    function getCookie(name) {
+      let cookieValue = null;
+      if (document.cookie && document.cookie !== "") {
+        const cookies = document.cookie.split(";");
+        for (let cookie of cookies) {
+          cookie = cookie.trim();
+          if (cookie.startsWith(name + "=")) {
+            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+            break;
+          }
+        }
+      }
+      return cookieValue;
+    }
+
     const btn = event.target;
+    data = {
+      'prd_name' : prd_name,
+      'desc' : desc,
+      'img_src' : img_src,
+      'price' : price,
+    }
     btn.textContent = '✓ Added';
     setTimeout(() => (btn.textContent = 'Add'), 1500);
+    const response = await fetch('/send_cart_data/',{
+      method: 'POST',
+      headers: {
+          "Content-Type": "application/json",
+          "X-CSRFToken": getCookie("csrftoken")  
+        },
+      body : JSON.stringify(data)
+    })
+    
+    const result = await response.json()
   }
 
   // 🌫️ Sticky navbar shadow on scroll
@@ -164,15 +198,12 @@
 
 
 
-
-
-
 /*
     fetch('/RenderItem/')
     .then(response => response.json())
     .then(data => {
       let dishes = {
-      {% comment %} 'Starters': [
+      'Starters': [
         { name: 'Spring Rolls', desc: 'Crispy veggie rolls', price: '₹99', img: "{% static 'src/assets/crepe-with-cheese-vegetables-plate.jpg' %}" },
         { name: 'Garlic Bread', desc: 'Toasted with herbs', price: '₹79', img: "{% static 'src/assets/sandevil-sandh-BRMvT4sw-4c-unsplash.jpg' %}" }
       ],
@@ -187,7 +218,7 @@
       'Desserts': [
         { name: 'Gulab Jamun', desc: 'Sweet syrup balls', price: '₹59', img: "{% static 'src/assets/high-angle-delicious-indian-dessert.jpg' %}" },
         { name: 'Ice Cream', desc: 'Vanilla scoop', price: '₹69', img: "{% static 'src/assets/delicious-ice-cream-with-topping.jpg' %}" }
-      ] {% endcomment %}
+      ] 
     };
 
 

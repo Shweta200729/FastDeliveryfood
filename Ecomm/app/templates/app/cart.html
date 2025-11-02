@@ -50,6 +50,7 @@
       
       <div id="cart-items" class="space-y-4 mb-8">
 
+        {% for food_item in item %}
         <!-- Cart Item -->
         <div class="cart-item flex items-center justify-between bg-white p-6 rounded-lg 
                     shadow-md hover:shadow-lg transition relative" data-price="170">
@@ -63,12 +64,12 @@
           </button>
 
           <div class="flex items-center space-x-6 flex-1">
-            <img src="https://tse2.mm.bing.net/th/id/OIP.wPxPvmSwVg9ctUUqWH4mBgHaFK?cb=12ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3" 
+            <img src="{{food_item.cart_prd_image}}" 
                  alt="McPaneer" class="w-24 h-24 rounded-lg object-cover" />
             <div class="flex-1">
-              <h3 class="font-bold text-lg text-gray-800">McPaneer Burger</h3>
-              <p class="text-sm text-gray-600 mt-1">Delicious paneer patty with fresh vegetables and special sauce</p>
-              <p class="font-semibold mt-2 text-[rgb(244,164,96)]">₹170</p>
+              <h3 class="font-bold text-lg text-gray-800">{{food_item.cart_prd_name}}</h3>
+              <p class="text-sm text-gray-600 mt-1">{{food_item.cart_prd_description}}</p>
+              <p class="font-semibold mt-2 text-[rgb(244,164,96)]">₹{{food_item.cart_prd_price}}</p>
             </div>
           </div>
 
@@ -84,76 +85,10 @@
             </div>
           </div>
         </div>
+        {% endfor %}
 
-        <!-- Veggie -->
-        <div class="cart-item flex items-center justify-between bg-white p-6 rounded-lg 
-                    shadow-md hover:shadow-lg transition relative" data-price="150">
-          <button class="cancel-btn absolute top-2 right-2 text-red-500 hover:bg-red-100 
-                         rounded-full p-1 transition" title="Remove item">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" 
-                 viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" 
-                    stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-            </svg>
-          </button>
+        
 
-          <div class="flex items-center space-x-6 flex-1">
-            <img src="https://tse3.mm.bing.net/th/id/OIP.H8fX5eBqf9HU3EROcTUbzQHaEo?cb=12ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3" 
-                 alt="McVeggie" class="w-24 h-24 rounded-lg object-cover" />
-            <div class="flex-1">
-              <h3 class="font-bold text-lg text-gray-800">McVeggie Burger</h3>
-              <p class="text-sm text-gray-600 mt-1">Crispy veggie patty with lettuce, tomato, and mayo</p>
-              <p class="font-semibold mt-2 text-[rgb(244,164,96)]">₹150</p>
-            </div>
-          </div>
-
-          <div class="flex items-center space-x-6">
-            <div class="flex items-center border-2 border-[rgb(244,164,96)] rounded-lg">
-              <button class="decrease px-3 py-2 text-[rgb(244,164,96)] font-bold hover:bg-orange-50">−</button>
-              <input type="text" class="quantity-input w-10 text-center font-medium text-gray-800 focus:outline-none" value="0" readonly>
-              <button class="increase px-3 py-2 text-[rgb(244,164,96)] font-bold hover:bg-orange-50">+</button>
-            </div>
-            <div class="text-right min-w-24">
-              <p class="text-sm text-gray-600">Total</p>
-              <p class="text-lg font-bold text-[rgb(244,164,96)]">₹<span class="total">0</span></p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Drink -->
-        <div class="cart-item flex items-center justify-between bg-white p-6 rounded-lg 
-                    shadow-md hover:shadow-lg transition relative" data-price="80">
-          <button class="cancel-btn absolute top-2 right-2 text-red-500 hover:bg-red-100 
-                         rounded-full p-1 transition" title="Remove item">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" 
-                 viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" 
-                    stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-            </svg>
-          </button>
-
-          <div class="flex items-center space-x-6 flex-1">
-            <img src="https://theaustralianfoodshop.com/wp-content/uploads/2020/06/schweppes-solo-lemon-can-375ml.jpg" 
-                 alt="Solo Drink" class="w-24 h-24 rounded-lg object-cover" />
-            <div class="flex-1">
-              <h3 class="font-bold text-lg text-gray-800">Solo Lemon Drink</h3>
-              <p class="text-sm text-gray-600 mt-1">Refreshing lemon flavored beverage - 375ml can</p>
-              <p class="font-semibold mt-2 text-[rgb(244,164,96)]">₹80</p>
-            </div>
-          </div>
-
-          <div class="flex items-center space-x-6">
-            <div class="flex items-center border-2 border-[rgb(244,164,96)] rounded-lg">
-              <button class="decrease px-3 py-2 text-[rgb(244,164,96)] font-bold hover:bg-orange-50">−</button>
-              <input type="text" class="quantity-input w-10 text-center font-medium text-gray-800 focus:outline-none" value="0" readonly>
-              <button class="increase px-3 py-2 text-[rgb(244,164,96)] font-bold hover:bg-orange-50">+</button>
-            </div>
-            <div class="text-right min-w-24">
-              <p class="text-sm text-gray-600">Total</p>
-              <p class="text-lg font-bold text-[rgb(244,164,96)]">₹<span class="total">0</span></p>
-            </div>
-          </div>
-        </div>
 
       </div>
 
