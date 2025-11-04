@@ -29,8 +29,22 @@ def items(request):
 
 def cart (request): 
     user = request.user 
-    items = Cart.objects.filter(user == user)
+    items = Cart.objects.filter(user=user)
+    
+    if request.method=='POST':
+        form_type = request.POST.get('btn-cart')
+        id_to_delete = form_type
+        Cart.objects.get(id = id_to_delete).delete()
     return render (request, "app/cart.html",{'item':items})
+
+def send_inc_data(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        obj = Cart.objects.get(id = data['id'])
+        obj.prd_quantity = obj.prd_quantity + 1 
+        obj.save()
+        return JsonResponse({'value': obj.prd_quantity})
+
 
 def BookingTable(request):
     if request.method == 'POST':

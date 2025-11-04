@@ -33,7 +33,7 @@ class OrderItem(models.Model):
     prd_image = models.ImageField(upload_to='producting/', null=True, blank=True)
     prd_description = models.TextField()
     prd_type = models.CharField(max_length=20, choices=types)
-    prd_quantity = models.PositiveIntegerField(default = 1)
+    
     def __str__(self):
         return self.prd_name
 
@@ -44,7 +44,8 @@ class Cart(models.Model):
     cart_prd_price = models.IntegerField(default=0)
     cart_prd_description = models.TextField(blank=True)
     cart_prd_image = models.URLField(max_length=300, blank=True, null=True)
-
+    prd_quantity = models.PositiveIntegerField(default = 1)
+    
     def __str__(self):
         return f"{self.cart_prd_name} - ₹{self.cart_prd_price}"
 
