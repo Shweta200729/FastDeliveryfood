@@ -2,6 +2,11 @@ from django.shortcuts import render,redirect
 from .models import Booking,OrderItem,Cart
 from django.http import JsonResponse
 import json
+from django.contrib.auth.decorators import login_required
+from .forms import CreateUser
+from django.contrib.auth import login
+from django.contrib import messages
+from django.contrib.auth.forms import AuthenticationForm
 
 # Create your views here.
 def home (request):
@@ -131,3 +136,40 @@ def send_cart_data(request):
             return JsonResponse({"error": "Invalid JSON"}, status=400)
     return JsonResponse({"error": "Only POST method allowed"}, status=405)
         
+def entry(request):
+    signup_form = CreateUser()
+    login_form = AuthenticationForm()
+
+    if request.method == 'POST':
+        form_name = request.POST.get('form_name')
+
+        # ---- SIGNUP FORM ----
+        if form_name == 'signup_form':
+            signup_form = CreateUser(request.POST)
+            if signup_form.is_valid():
+                user = signup_form.save()
+                login(request, user)
+                messages.success(request, f"Welcome, {user.username}!")
+                return redirect('menu')
+            else:
+                messages.error(request, "Invalid signup details.")
+
+        # ---- LOGIN FORM ----
+        elif form_name == 'login_form':
+            login_form = AuthenticationForm(request, data=request.POST)
+            if login_form.is_valid():
+                user = login_form.get_user()
+                login(request, user)
+                messages.success(request, f"Welcome back, {user.username}!")
+                return redirect('menu')
+            else:
+                messages.error(request, "Invalid login credentials.")
+
+    return render(
+        request,
+        "app/login_signup.html",
+        {
+            'signup_form': signup_form,
+            'login_form': login_form
+        }
+    )
