@@ -8,6 +8,7 @@ urlpatterns = [
     path("BookingTable/" , views.BookingTable, name="BookingTable"),
     path("RenderItem/" , views.RenderItem, name='render'),
     path("send_cart_data/",views.send_cart_data , name = 'send_cart_data'),
-    path("send_inc_data/",views.send_inc_data, name = 'send_inc_data'),
+    path('send_inc_data/', views.send_inc_data, name='send_inc_data'),
+    path('send_dec_data/', views.send_dec_data, name='send_dec_data'),
     path("entry/",views.entry,name = "entry")
 ]

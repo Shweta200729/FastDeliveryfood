@@ -223,7 +223,6 @@
 
   </section>
 
-<!-- Footer Section -->
   <footer class="bg-gray-900 text-white pt-10 pb-8">
     <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
       <div>
@@ -257,7 +256,6 @@
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
     <script>
-      // Create map centered at the fixed coordinates
       const map = L.map("map").setView([{{ lat }}, {{ lon }}], 13);
 
       // Add Geoapify tile layer
@@ -274,17 +272,18 @@
         .addTo(map)
         .bindPopup("Mumbai, India")
         .openPopup();
-    </script>
-<script>
-  window.addEventListener('scroll', function () {
-    const navbar = document.getElementById('navbar');
-    if (window.scrollY > 50) {
-      navbar.classList.remove('bg-yellow-100');
-      navbar.classList.add('bg-yellow-100/50', 'backdrop-blur-md');
-    } else {
-      navbar.classList.remove('bg-yellow-100/50', 'backdrop-blur-md');
-      navbar.classList.add('bg-yellow-100');
-    }
-  });
-</script>
+
+        window.addEventListener('scroll', function () {
+          const navbar = document.getElementById('navbar');
+          if (window.scrollY > 50) {
+            navbar.classList.remove('bg-yellow-100');
+            navbar.classList.add('bg-yellow-100/50', 'backdrop-blur-md');
+          } else {
+            navbar.classList.remove('bg-yellow-100/50', 'backdrop-blur-md');
+            navbar.classList.add('bg-yellow-100');
+          }
+        });
+
+      </script>
+
 </html>        

@@ -32,6 +32,7 @@ def items(request):
             return redirect('cart')
     return render(request,'app/items.html')
 
+@login_required(login_url='/login/')
 def cart (request): 
     user = request.user 
     items = Cart.objects.filter(user=user)
@@ -40,14 +41,27 @@ def cart (request):
         form_type = request.POST.get('btn-cart')
         id_to_delete = form_type
         Cart.objects.get(id = id_to_delete).delete()
+    
     return render (request, "app/cart.html",{'item':items})
 
 def send_inc_data(request):
     if request.method == 'POST':
         data = json.loads(request.body)
-        obj = Cart.objects.get(id = data['id'])
-        obj.prd_quantity = obj.prd_quantity + 1 
+        obj = Cart.objects.get(id=data['id'])
+        obj.prd_quantity += 1
         obj.save()
+        return JsonResponse({'value': obj.prd_quantity})
+
+def send_dec_data(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        obj = Cart.objects.get(id=data['id'], user=request.user)
+
+        # Prevent quantity going below 1
+        if obj.prd_quantity > 1:
+            obj.prd_quantity -= 1
+            obj.save()
+
         return JsonResponse({'value': obj.prd_quantity})
 
 
@@ -72,6 +86,11 @@ def RenderItem(request):
     main_course = OrderItem.objects.filter(prd_type='Main_course')
     beverages = OrderItem.objects.filter(prd_type='Beverages')
     dessert = OrderItem.objects.filter(prd_type='Dessert')
+    
+    print(Starter_items)
+    print(main_course)
+    print(beverages)
+    print(dessert)
     
     starter_list = []
     for item in Starter_items:

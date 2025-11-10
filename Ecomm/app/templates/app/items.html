@@ -9,7 +9,6 @@
   <!-- ✅ Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- GSAP for scroll animations -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
@@ -29,11 +28,9 @@
 
 <body class="overflow-x-hidden">
 
-<!-- Navbar -->
 <div id="navbar"
   class="fixed top-0 left-0 w-full flex justify-between items-center px-10 py-3 bg-white/70 backdrop-blur-md transition-all duration-300 z-50">
 
-  <!-- Left Menu Items -->
   <div class="flex gap-8 items-center font-medium text-[#2C2C2C]">
     <div class="hover:text-[#F4A460] cursor-pointer">🍽️ Menu</div>
     <div class="hover:text-[#F4A460] cursor-pointer">📅 Book Table</div>
@@ -53,7 +50,6 @@
 </div>
 
 
-  <!-- Search -->
   <div class="mt-20 px-10 text-center">
     <input
       id="searchInput"
@@ -63,7 +59,6 @@
     />
   </div>
 
-  <!-- Categories -->
   <div class="flex justify-center flex-wrap gap-4 px-10 py-4">
     <button class="category-btn active bg-[#F4A460] text-white border-2 border-[#F4A460] px-6 py-2 rounded-full font-semibold transition-all duration-300" onclick="showCategory('All', event)">All</button>
     <button class="category-btn border-2 border-gray-200 bg-white text-[#2C2C2C] px-6 py-2 rounded-full font-semibold hover:bg-[#F4A460] hover:text-white transition-all duration-300" onclick="showCategory('Starters', event)">Starters</button>
@@ -73,23 +68,19 @@
   </div>
 
   <!-- Cards -->
-  <div id="cardContainer" class="grid grid-cols-[repeat(auto-fill,minmax(220px,1fr))] gap-6 px-10 pb-10 max-w-[1400px] mx-auto"></div>
+  <div id="cardContainer" class="fix grid grid-cols-[repeat(auto-fill,minmax(220px,1fr))] gap-6 px-10 pb-10 max-w-[1400px] mx-auto"></div>
 
 
 
 
     <script>
-  // 🌍 Global variable to store dishes fetched from Django
   let dishes = {};
 
-  // 🍴 Fetch menu data from your Django view
   fetch('/RenderItem/')
     .then(response => response.json())
     .then(data => {
       dishes = data; // Save the fetched menu
       console.log('✅ Menu data loaded:', dishes);
-
-      // Show all dishes once data is loaded
       showCategory('All', { target: document.querySelector('.category-btn') });
     })
     .catch(error => {
@@ -98,24 +89,20 @@
       container.innerHTML = `<p class="text-center text-red-500 mt-10">Failed to load menu data.</p>`;
     });
 
-  // 🍽️ Function to display dishes by category
   function showCategory(category, event) {
     const container = document.getElementById('cardContainer');
     container.innerHTML = '';
 
-    // ⏳ Show loader if data not yet ready
     if (!dishes || Object.keys(dishes).length === 0) {
       container.innerHTML = `<p class="text-center text-gray-500 mt-10">Loading menu...</p>`;
       return;
     }
 
-    // 📋 Get all dishes or a specific category
     const items =
       category === 'All'
         ? Object.values(dishes).flat()
         : (dishes[category] || []);
 
-    // 🃏 Generate cards dynamically
     items.forEach(dish => {
       const card = document.createElement('div');
       card.className =
@@ -134,7 +121,6 @@
       container.appendChild(card);
     });
 
-    // 🟡 Update category button styles
     document.querySelectorAll('.category-btn').forEach(btn => {
       btn.classList.remove('bg-[#F4A460]', 'text-white', 'border-[#F4A460]');
       btn.classList.add('bg-white', 'text-[#2C2C2C]', 'border-gray-200');
@@ -147,7 +133,6 @@
     }
   }
 
-  // 🛒 Simple add-to-cart animation
   async function addToCart(event, prd_name , desc, img_src, price) {
 
     function getCookie(name) {
@@ -186,13 +171,11 @@
     const result = await response.json()
   }
 
-  // 🌫️ Sticky navbar shadow on scroll
   window.addEventListener('scroll', () => {
     const navbar = document.getElementById('navbar');
     navbar.classList.toggle('scrolled', window.scrollY > 50);
   });
 
-  // 🚀 Optionally show "Loading" initially before fetch completes
   document.getElementById('cardContainer').innerHTML =
     `<p class="text-center text-gray-500 mt-10">Loading menu...</p>`;
 
